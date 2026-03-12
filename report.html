@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Report Tariff Fraud</title>
+
 <link rel="stylesheet" href="assets/style.css">
+
 </head>
 
 <body>
@@ -17,19 +23,34 @@ or misclassification of imports, you may qualify for a
 whistleblower reward.
 </p>
 
-<form>
+<p style="font-size:14px;color:gray">
+Submitting this form does not create an attorney-client relationship.
+Information may be reviewed by partner attorneys or investigators.
+</p>
+
+<form action="https://formspree.io/f/xlgpnekz" method="POST">
 
 <label>Your Name</label>
-<input type="text">
+<input type="text" name="name" required>
 
 <label>Email</label>
-<input type="email">
+<input type="email" name="email" required>
 
 <label>Company Being Reported</label>
-<input type="text">
+<input type="text" name="company">
+
+<label>Industry</label>
+<input type="text" name="industry">
+
+<label>Estimated Unpaid Tariffs ($)</label>
+<input type="number" name="estimated_tariffs">
 
 <label>Description of Fraud</label>
-<textarea rows="6"></textarea>
+<textarea name="description" rows="6" required></textarea>
+
+<input type="hidden" name="_subject" value="New Tariff Fraud Report">
+
+<input type="hidden" name="_redirect" value="https://tariffsheriff.com/thankyou.html">
 
 <button type="submit">Submit Report</button>
 
