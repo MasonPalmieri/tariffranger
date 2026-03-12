@@ -26,7 +26,7 @@ background:var(--light);
 color:#0b1220;
 }
 
-/* PASSWORD SCREEN */
+/* PASSWORD */
 
 #gate{
 position:fixed;
@@ -200,7 +200,7 @@ border-radius:10px;
 display:none;
 }
 
-/* INDUSTRIES */
+/* CARDS */
 
 .section{
 padding:60px 20px;
@@ -255,7 +255,7 @@ margin-right:6px;
 vertical-align:middle;
 }
 
-/* FLOATING CTA */
+/* FLOAT CTA */
 
 #floatingCTA{
 position:fixed;
@@ -419,26 +419,24 @@ Check Refund Eligibility
 </section>
 
 
+<!-- IMPORTER LEAD FINDER -->
+
 <section class="section">
 
-<h2 style="text-align:center">Industry Guides</h2>
+<h2 style="text-align:center">Importer Lead Finder</h2>
 
-<div class="cards">
+<p style="text-align:center">
+Generate search queries to identify companies importing tariffed products.
+</p>
 
-<div class="card">
-<h3>China Importers</h3>
-<p>Companies importing goods from China between 2018-2024 may qualify for refunds.</p>
-</div>
+<div style="max-width:600px;margin:auto;background:white;padding:24px;border-radius:16px;box-shadow:var(--shadow)">
 
-<div class="card">
-<h3>Electronics Importers</h3>
-<p>Electronics products were heavily impacted by Section 301 tariffs.</p>
-</div>
+<label>Product or HS Code</label>
+<input id="leadProduct" placeholder="Example: LED lights, auto parts">
 
-<div class="card">
-<h3>Automotive Importers</h3>
-<p>Automotive suppliers importing components may qualify for refunds.</p>
-</div>
+<button onclick="generateLeads()">Find Importers</button>
+
+<div id="leadResults" class="result"></div>
 
 </div>
 
@@ -495,17 +493,17 @@ alert("Incorrect password")
 
 }
 
-/* AUTO FORMAT NUMBER INPUT */
+/* FORMAT NUMBER INPUT */
 
 document.getElementById("importValue").addEventListener("input", function(e){
 
-let val = e.target.value.replace(/,/g,"");
+let val = e.target.value.replace(/,/g,"")
 
 if(!isNaN(val) && val !== ""){
-e.target.value = Number(val).toLocaleString();
+e.target.value = Number(val).toLocaleString()
 }
 
-});
+})
 
 
 /* CALCULATOR */
@@ -536,7 +534,8 @@ r.innerHTML=
 
 }
 
-/* IMPORTER DATASET */
+
+/* IMPORTER SEARCH */
 
 const dataset=[
 
@@ -573,6 +572,41 @@ html+=c.company+" — "+c.product+" imported from "+c.country+"<br><br>"
 
 })
 
+box.innerHTML=html
+
+}
+
+
+/* LEAD GENERATOR */
+
+function generateLeads(){
+
+const product=document.getElementById("leadProduct").value
+
+if(!product){
+alert("Enter product")
+return
+}
+
+const queries=[
+
+`https://www.google.com/search?q=${product}+importer+USA`,
+`https://www.google.com/search?q=companies+importing+${product}+from+china`,
+`https://www.google.com/search?q=site:panjiva.com+${product}+importer`,
+`https://www.google.com/search?q=site:importgenius.com+${product}+importer`,
+`https://www.google.com/search?q=${product}+supplier+USA+importer`
+
+]
+
+let html="<b>Suggested Searches:</b><br><br>"
+
+queries.forEach(q=>{
+html+=`<a href="${q}" target="_blank">${q}</a><br><br>`
+})
+
+const box=document.getElementById("leadResults")
+
+box.style.display="block"
 box.innerHTML=html
 
 }
