@@ -14,6 +14,7 @@
 --dark:#0f5132;
 --light:#f5f7fa;
 --shadow:0 18px 50px rgba(15,23,42,.12);
+--border:rgba(15,23,42,.08);
 }
 
 *{box-sizing:border-box}
@@ -25,7 +26,7 @@ background:var(--light);
 color:#0b1220;
 }
 
-/* PASSWORD GATE */
+/* PASSWORD SCREEN */
 
 #gate{
 position:fixed;
@@ -63,84 +64,56 @@ cursor:pointer;
 
 header{
 background:white;
-padding:14px 20px;
-box-shadow:0 5px 20px rgba(0,0,0,.05);
+border-bottom:1px solid var(--border);
+}
+
+.nav{
 display:flex;
 align-items:center;
 gap:10px;
+padding:14px 20px;
 font-weight:900;
 color:var(--dark);
 }
 
-header img{
+.nav img{
 width:36px;
 }
 
 /* HERO */
 
 .hero{
-background:linear-gradient(135deg,#0f5132,#2cab4b);
-color:white;
-padding:80px 20px;
-text-align:center;
-position:relative;
-overflow:hidden;
+padding:60px 20px;
+display:grid;
+grid-template-columns:1fr 420px;
+gap:50px;
+align-items:center;
+max-width:1100px;
+margin:auto;
 }
 
-.hero h1{
-font-size:48px;
-margin-bottom:10px;
+.hero img{
+width:100%;
 }
 
-.hero p{
-font-size:20px;
-opacity:.9;
+h1{
+font-size:46px;
+margin-bottom:12px;
+color:var(--dark);
 }
 
-.ranger{
-
-position:absolute;
-bottom:0;
-left:-400px;
-width:420px;
-animation:rangerSlide 2s forwards;
+.lead{
+font-size:18px;
+color:#5b6776;
 }
-
-@keyframes rangerSlide{
-0%{left:-400px}
-100%{left:40px}
-}
-
-/* speech bubble */
-
-.bubble{
-position:absolute;
-left:460px;
-bottom:220px;
-background:white;
-color:#0b1220;
-padding:18px 22px;
-border-radius:12px;
-font-weight:700;
-box-shadow:var(--shadow);
-max-width:320px;
-opacity:0;
-animation:bubbleIn 1s 2s forwards;
-}
-
-@keyframes bubbleIn{
-to{opacity:1}
-}
-
-/* CTA */
 
 .cta{
 display:inline-block;
-margin-top:30px;
-padding:16px 28px;
+margin-top:20px;
+padding:14px 24px;
 border-radius:999px;
-background:white;
-color:#0f5132;
+background:linear-gradient(135deg,#2cab4b,#7bd86f);
+color:white;
 font-weight:900;
 text-decoration:none;
 }
@@ -162,8 +135,13 @@ gap:20px;
 .stat{
 background:white;
 padding:24px;
-border-radius:16px;
+border-radius:18px;
 box-shadow:var(--shadow);
+}
+
+.stat h3{
+margin-top:0;
+color:var(--dark);
 }
 
 /* TOOLS */
@@ -172,6 +150,11 @@ box-shadow:var(--shadow);
 background:#0f5132;
 color:white;
 padding:60px 20px;
+}
+
+.tools h2{
+text-align:center;
+margin-bottom:40px;
 }
 
 .tool-grid{
@@ -185,8 +168,8 @@ gap:40px;
 .tool{
 background:white;
 color:black;
-padding:28px;
-border-radius:18px;
+padding:30px;
+border-radius:20px;
 box-shadow:var(--shadow);
 }
 
@@ -199,8 +182,8 @@ margin-top:6px;
 }
 
 button{
-margin-top:14px;
-padding:14px 20px;
+margin-top:15px;
+padding:14px 22px;
 border:none;
 border-radius:999px;
 background:#2cab4b;
@@ -210,11 +193,32 @@ cursor:pointer;
 }
 
 .result{
-margin-top:16px;
+margin-top:20px;
 background:#f1f5f9;
-padding:14px;
+padding:15px;
 border-radius:10px;
 display:none;
+}
+
+/* INDUSTRIES */
+
+.section{
+padding:60px 20px;
+}
+
+.cards{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.card{
+background:white;
+padding:24px;
+border-radius:18px;
+box-shadow:var(--shadow);
 }
 
 /* CONTACT */
@@ -236,29 +240,44 @@ box-shadow:var(--shadow);
 /* FOOTER */
 
 footer{
-margin-top:40px;
-padding:20px;
-text-align:center;
+border-top:1px solid var(--border);
+background:white;
+padding:18px 0;
 font-size:13px;
 color:#64748b;
+text-align:center;
+margin-top:50px;
 }
 
 footer img{
 width:18px;
-vertical-align:middle;
 margin-right:6px;
+vertical-align:middle;
+}
+
+/* FLOATING CTA */
+
+#floatingCTA{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#2cab4b;
+color:white;
+padding:14px 20px;
+border-radius:999px;
+font-weight:900;
+box-shadow:var(--shadow);
+text-decoration:none;
+z-index:1000;
 }
 
 /* MOBILE */
 
 @media(max-width:900px){
 
-.ranger{
-display:none;
-}
-
-.bubble{
-display:none;
+.hero{
+grid-template-columns:1fr;
+text-align:center;
 }
 
 .stats{
@@ -269,25 +288,25 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 
+.cards{
+grid-template-columns:1fr;
+}
+
 }
 
 </style>
-
 </head>
 
 <body>
-
 
 <!-- PASSWORD -->
 
 <div id="gate">
 
 <h2>Tariff Ranger Access</h2>
-
 <p>Enter password</p>
 
 <input id="pw" type="password">
-
 <button onclick="unlock()">Enter</button>
 
 </div>
@@ -295,47 +314,53 @@ grid-template-columns:1fr;
 
 <div id="site">
 
-
 <header>
+<div class="nav">
 <img src="assets/tricon.png">
 Tariff Ranger
+</div>
 </header>
 
 
 <section class="hero">
 
-<h1>Hold It Right There, Importer</h1>
+<div>
 
-<p>You may have overpaid tariffs.</p>
+<h1>Recover Tariffs You May Have Overpaid</h1>
 
-<a class="cta" href="#tools">Check Refund Eligibility</a>
+<p class="lead">
+Recent U.S. court rulings may require the government to refund billions in tariffs collected under emergency authority.
+Many U.S. importers may now qualify for refunds — often with interest included.
+</p>
 
-<img src="assets/ranger.jpg" class="ranger">
+<a class="cta" href="#tools">
+Check Refund Eligibility
+</a>
 
-<div class="bubble" id="speech"></div>
+</div>
+
+<div>
+<img src="assets/trbanner.png">
+</div>
 
 </section>
 
 
-<div class="container">
-
-<div class="stats">
+<div class="container stats">
 
 <div class="stat">
 <h3>$130B+ Potential Refunds</h3>
-<p>Recent rulings may require the government to refund billions in tariffs.</p>
+<p>Recent rulings could require the U.S. government to refund between $130B and $166B in previously collected tariffs.</p>
 </div>
 
 <div class="stat">
-<h3>330,000 Importers</h3>
-<p>Hundreds of thousands of U.S. companies may qualify.</p>
+<h3>330,000 Importers Affected</h3>
+<p>Hundreds of thousands of U.S. companies paid tariffs that may now qualify for refunds.</p>
 </div>
 
 <div class="stat">
-<h3>Interest Included</h3>
-<p>Refunds may include interest depending on payment date.</p>
-</div>
-
+<h3>Interest May Be Added</h3>
+<p>Refund payments may include interest depending on when tariffs were paid.</p>
 </div>
 
 </div>
@@ -343,16 +368,16 @@ Tariff Ranger
 
 <section id="tools" class="tools">
 
-<h2 style="text-align:center">Tariff Tools</h2>
+<h2>Tariff Refund Tools</h2>
 
 <div class="tool-grid">
 
 <div class="tool">
 
-<h3>Refund Calculator</h3>
+<h3>Tariff Refund Calculator</h3>
 
 <label>Annual Import Value</label>
-<input id="importValue" type="number">
+<input id="importValue" type="text" placeholder="Enter value">
 
 <label>Tariff Rate</label>
 <select id="rate">
@@ -361,7 +386,7 @@ Tariff Ranger
 <option value="0.25">25%</option>
 </select>
 
-<label>Years Paid</label>
+<label>Years Tariffs Paid</label>
 <select id="years">
 <option value="1">1</option>
 <option value="2">2</option>
@@ -378,12 +403,12 @@ Tariff Ranger
 
 <div class="tool">
 
-<h3>Importer Lookup</h3>
+<h3>Importer Database Lookup</h3>
 
 <label>Company Name</label>
 <input id="search">
 
-<button onclick="searchImporter()">Search</button>
+<button onclick="searchImporter()">Search Import Records</button>
 
 <div id="searchResults" class="result"></div>
 
@@ -394,18 +419,42 @@ Tariff Ranger
 </section>
 
 
-<section class="container contact">
+<section class="section">
+
+<h2 style="text-align:center">Industry Guides</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>China Importers</h3>
+<p>Companies importing goods from China between 2018-2024 may qualify for refunds.</p>
+</div>
+
+<div class="card">
+<h3>Electronics Importers</h3>
+<p>Electronics products were heavily impacted by Section 301 tariffs.</p>
+</div>
+
+<div class="card">
+<h3>Automotive Importers</h3>
+<p>Automotive suppliers importing components may qualify for refunds.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section contact">
 
 <h2>Request Refund Review</h2>
 
-<p>Email: <a href="mailto:alex@tariffranger.com">alex@tariffranger.com</a></p>
+<p>Email directly: <a href="mailto:alex@tariffranger.com">alex@tariffranger.com</a></p>
 
 <form action="https://formsubmit.co/alex@tariffranger.com" method="POST">
 
 <input name="Name" placeholder="Your Name">
-
 <input name="Email" placeholder="Email">
-
 <input name="Company" placeholder="Company">
 
 <button>Request Eligibility Review</button>
@@ -424,6 +473,7 @@ Website by PalmWeb • mason@palmweb.net
 
 </div>
 
+<a id="floatingCTA" href="#tools">Check Refund Eligibility</a>
 
 
 <script>
@@ -437,8 +487,6 @@ if(document.getElementById("pw").value==="tariff"){
 document.getElementById("gate").style.display="none";
 document.getElementById("site").style.display="block";
 
-typeSpeech()
-
 }else{
 
 alert("Incorrect password")
@@ -447,39 +495,26 @@ alert("Incorrect password")
 
 }
 
-/* speech typing */
+/* AUTO FORMAT NUMBER INPUT */
 
-function typeSpeech(){
+document.getElementById("importValue").addEventListener("input", function(e){
 
-const text="Stop right there. You might be owed tariff refunds."
+let val = e.target.value.replace(/,/g,"");
 
-let i=0
-
-const bubble=document.getElementById("speech")
-
-function typing(){
-
-if(i<text.length){
-
-bubble.innerHTML+=text.charAt(i)
-
-i++
-
-setTimeout(typing,40)
-
+if(!isNaN(val) && val !== ""){
+e.target.value = Number(val).toLocaleString();
 }
 
-}
+});
 
-typing()
 
-}
-
-/* calculator */
+/* CALCULATOR */
 
 function calcRefund(){
 
-const value=parseFloat(document.getElementById("importValue").value)
+let raw = document.getElementById("importValue").value.replace(/,/g,"")
+
+const value=parseFloat(raw)
 const rate=parseFloat(document.getElementById("rate").value)
 const years=parseInt(document.getElementById("years").value)
 
@@ -501,7 +536,7 @@ r.innerHTML=
 
 }
 
-/* importer dataset */
+/* IMPORTER DATASET */
 
 const dataset=[
 
