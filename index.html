@@ -13,8 +13,8 @@
 --green:#2cab4b;
 --dark:#0f5132;
 --light:#f5f7fa;
---shadow:0 18px 50px rgba(15,23,42,.12);
 --border:rgba(15,23,42,.08);
+--shadow:0 18px 50px rgba(15,23,42,.12);
 }
 
 *{box-sizing:border-box}
@@ -26,7 +26,7 @@ background:var(--light);
 color:#0b1220;
 }
 
-/* PASSWORD */
+/* PASSWORD GATE */
 
 #gate{
 position:fixed;
@@ -77,7 +77,7 @@ color:var(--dark);
 }
 
 .nav img{
-width:36px;
+width:34px;
 }
 
 /* HERO */
@@ -86,7 +86,7 @@ width:36px;
 padding:60px 20px;
 display:grid;
 grid-template-columns:1fr 420px;
-gap:50px;
+gap:40px;
 align-items:center;
 max-width:1100px;
 margin:auto;
@@ -97,8 +97,8 @@ width:100%;
 }
 
 h1{
-font-size:46px;
-margin-bottom:12px;
+font-size:44px;
+margin-bottom:10px;
 color:var(--dark);
 }
 
@@ -139,22 +139,12 @@ border-radius:18px;
 box-shadow:var(--shadow);
 }
 
-.stat h3{
-margin-top:0;
-color:var(--dark);
-}
-
 /* TOOLS */
 
 .tools{
 background:#0f5132;
 color:white;
 padding:60px 20px;
-}
-
-.tools h2{
-text-align:center;
-margin-bottom:40px;
 }
 
 .tool-grid{
@@ -200,25 +190,12 @@ border-radius:10px;
 display:none;
 }
 
-/* CARDS */
-
-.section{
-padding:60px 20px;
-}
-
-.cards{
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-.card{
+.result-item{
 background:white;
-padding:24px;
-border-radius:18px;
+padding:14px;
+border-radius:10px;
 box-shadow:var(--shadow);
+margin-bottom:10px;
 }
 
 /* CONTACT */
@@ -242,7 +219,7 @@ box-shadow:var(--shadow);
 footer{
 border-top:1px solid var(--border);
 background:white;
-padding:18px 0;
+padding:18px;
 font-size:13px;
 color:#64748b;
 text-align:center;
@@ -253,22 +230,6 @@ footer img{
 width:18px;
 margin-right:6px;
 vertical-align:middle;
-}
-
-/* FLOAT CTA */
-
-#floatingCTA{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#2cab4b;
-color:white;
-padding:14px 20px;
-border-radius:999px;
-font-weight:900;
-box-shadow:var(--shadow);
-text-decoration:none;
-z-index:1000;
 }
 
 /* MOBILE */
@@ -288,10 +249,6 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 
-.cards{
-grid-template-columns:1fr;
-}
-
 }
 
 </style>
@@ -304,9 +261,11 @@ grid-template-columns:1fr;
 <div id="gate">
 
 <h2>Tariff Ranger Access</h2>
+
 <p>Enter password</p>
 
 <input id="pw" type="password">
+
 <button onclick="unlock()">Enter</button>
 
 </div>
@@ -316,7 +275,7 @@ grid-template-columns:1fr;
 
 <header>
 <div class="nav">
-<img src="assets/trlogo.png">
+<img src="assets/tricon.png">
 Tariff Ranger
 </div>
 </header>
@@ -329,8 +288,7 @@ Tariff Ranger
 <h1>Recover Tariffs You May Have Overpaid</h1>
 
 <p class="lead">
-Recent U.S. court rulings may require the government to refund billions in tariffs collected under emergency authority.
-Many U.S. importers may now qualify for refunds — often with interest included.
+Recent rulings may require the government to refund billions in tariffs collected from U.S. importers.
 </p>
 
 <a class="cta" href="#tools">
@@ -350,17 +308,17 @@ Check Refund Eligibility
 
 <div class="stat">
 <h3>$130B+ Potential Refunds</h3>
-<p>Recent rulings could require the U.S. government to refund between $130B and $166B in previously collected tariffs.</p>
+<p>Recent rulings may require massive tariff refunds.</p>
 </div>
 
 <div class="stat">
-<h3>330,000 Importers Affected</h3>
-<p>Hundreds of thousands of U.S. companies paid tariffs that may now qualify for refunds.</p>
+<h3>330,000 Importers</h3>
+<p>Hundreds of thousands of U.S. companies paid tariffs.</p>
 </div>
 
 <div class="stat">
-<h3>Interest May Be Added</h3>
-<p>Refund payments may include interest depending on when tariffs were paid.</p>
+<h3>Interest May Apply</h3>
+<p>Refund payments may include additional interest.</p>
 </div>
 
 </div>
@@ -368,7 +326,7 @@ Check Refund Eligibility
 
 <section id="tools" class="tools">
 
-<h2>Tariff Refund Tools</h2>
+<h2 style="text-align:center">Tariff Refund Tools</h2>
 
 <div class="tool-grid">
 
@@ -377,7 +335,7 @@ Check Refund Eligibility
 <h3>Tariff Refund Calculator</h3>
 
 <label>Annual Import Value</label>
-<input id="importValue" type="text" placeholder="Enter value">
+<input id="importValue" type="number">
 
 <label>Tariff Rate</label>
 <select id="rate">
@@ -403,14 +361,14 @@ Check Refund Eligibility
 
 <div class="tool">
 
-<h3>Importer Database Lookup</h3>
+<h3>Live Importer Database</h3>
 
-<label>Company Name</label>
-<input id="search">
+<label>Search Company or Product</label>
+<input id="liveSearch" placeholder="Example: LED lights">
 
-<button onclick="searchImporter()">Search Import Records</button>
+<button onclick="searchLive()">Search Shipments</button>
 
-<div id="searchResults" class="result"></div>
+<div id="liveResults" class="result"></div>
 
 </div>
 
@@ -419,7 +377,7 @@ Check Refund Eligibility
 </section>
 
 
-<section class="section contact">
+<section class="container contact">
 
 <h2>Request Refund Review</h2>
 
@@ -428,7 +386,9 @@ Check Refund Eligibility
 <form action="https://formsubmit.co/alex@tariffranger.com" method="POST">
 
 <input name="Name" placeholder="Your Name">
+
 <input name="Email" placeholder="Email">
+
 <input name="Company" placeholder="Company">
 
 <button>Request Eligibility Review</button>
@@ -440,14 +400,13 @@ Check Refund Eligibility
 
 <footer>
 
-<img src="assets/palmweb.png">
-Website by <a href="https://palmweb.net">PalmWeb</a> • mason@palmweb.net
+<img src="assets/logo.png">
+Website by PalmWeb • mason@palmweb.net
 
 </footer>
 
 </div>
 
-<a id="floatingCTA" href="#tools">Check Refund Eligibility</a>
 
 <script>
 
@@ -468,31 +427,18 @@ alert("Incorrect password")
 
 }
 
-/* FORMAT NUMBER INPUT */
-
-document.getElementById("importValue").addEventListener("input", function(e){
-
-let val = e.target.value.replace(/,/g,"")
-
-if(!isNaN(val) && val !== ""){
-e.target.value = Number(val).toLocaleString()
-}
-
-})
-
 /* CALCULATOR */
 
 function calcRefund(){
 
-let raw = document.getElementById("importValue").value.replace(/,/g,"")
-
-const value=parseFloat(raw)
+const value=parseFloat(document.getElementById("importValue").value)
 const rate=parseFloat(document.getElementById("rate").value)
 const years=parseInt(document.getElementById("years").value)
 
 if(!value){alert("Enter import value");return}
 
 const tariffs=value*rate*years
+
 const refundLow=tariffs
 const refundHigh=tariffs*1.15
 
@@ -508,42 +454,56 @@ r.innerHTML=
 
 }
 
-const dataset=[
+/* LIVE IMPORTER SEARCH */
 
-{company:"Apple Inc",country:"China",product:"Electronics"},
-{company:"Nike",country:"China",product:"Footwear"},
-{company:"Walmart",country:"China",product:"Consumer Goods"},
-{company:"Tesla",country:"China",product:"Auto Parts"},
-{company:"Home Depot",country:"China",product:"Construction Materials"}
+async function searchLive(){
 
-]
+const q=document.getElementById("liveSearch").value
 
-function searchImporter(){
-
-const q=document.getElementById("search").value.toLowerCase()
-
-const results=dataset.filter(c=>c.company.toLowerCase().includes(q))
-
-const box=document.getElementById("searchResults")
-
-box.style.display="block"
-
-if(results.length===0){
-
-box.innerHTML="No records found in sample dataset."
+if(!q){
+alert("Enter search term")
 return
-
 }
+
+const resultsBox=document.getElementById("liveResults")
+
+resultsBox.style.display="block"
+
+resultsBox.innerHTML="Searching shipment database..."
+
+try{
+
+const res = await fetch(`https://api.importyeti.com/search?q=${encodeURIComponent(q)}`)
+
+const data = await res.json()
 
 let html=""
 
-results.forEach(c=>{
+data.results.slice(0,10).forEach(company=>{
 
-html+=c.company+" — "+c.product+" imported from "+c.country+"<br><br>"
+html+=`
+<div class="result-item">
+
+<strong>${company.company_name}</strong><br>
+Country: ${company.country}<br>
+Supplier: ${company.supplier}<br>
+
+<a href="https://www.importyeti.com/company/${company.slug}" target="_blank">
+View Shipment History
+</a>
+
+</div>
+`
 
 })
 
-box.innerHTML=html
+resultsBox.innerHTML=html
+
+}catch{
+
+resultsBox.innerHTML="Unable to load shipment data right now."
+
+}
 
 }
 
