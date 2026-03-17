@@ -1,46 +1,95 @@
-body{
-font-family: Arial, Helvetica, sans-serif;
-margin:0;
-background:#f4f4f4;
+/* Shared styles for sub-pages */
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@400,500,700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Satoshi', 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #1a2e24;
+  background: #f8faf9;
+  -webkit-font-smoothing: antialiased;
 }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:30px;
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
 }
 
-h1{
-margin-top:0;
+h1 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  font-weight: 800;
+  color: #0f4d32;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
 }
 
-input, textarea{
-width:100%;
-padding:10px;
-margin-top:5px;
-margin-bottom:15px;
-border:1px solid #ccc;
-border-radius:4px;
+p {
+  color: #5a7268;
+  margin-bottom: 1rem;
+  max-width: 65ch;
 }
 
-button{
-padding:12px 20px;
-background:#ffcc00;
-border:none;
-font-weight:bold;
-cursor:pointer;
+a { color: #1a6b4a; }
+a:hover { color: #0f4d32; }
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: #0f4d32;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.9375rem;
 }
 
-button:hover{
-background:#e6b800;
+.btn-primary:hover { background: #1a6b4a; color: white; }
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #5a7268;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
 }
 
-.btn-primary{
-background:#ffcc00;
-padding:12px 20px;
-text-decoration:none;
-color:black;
-font-weight:bold;
-display:inline-block;
-margin-top:20px;
+input, select, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(15, 77, 50, 0.18);
+  background: white;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #1a2e24;
 }
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #1a6b4a;
+  box-shadow: 0 0 0 3px rgba(26, 107, 74, 0.1);
+}
+
+textarea { resize: vertical; }
+
+button[type="submit"] {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: #0f4d32;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button[type="submit"]:hover { background: #1a6b4a; }
+
+strong { color: #1a2e24; }
