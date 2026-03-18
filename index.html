@@ -68,15 +68,30 @@
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hero-stat-ring">
-      <svg viewBox="0 0 200 200" class="ring-svg">
-        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18"/>
-        <circle cx="100" cy="100" r="80" fill="none" stroke="#34d399" stroke-width="18" stroke-dasharray="380 503" stroke-linecap="round" transform="rotate(-90 100 100)"/>
-      </svg>
-      <div class="ring-label">
-        <span class="ring-value">IEEPA</span>
-        <span class="ring-sub">Tariff Recovery<br>Opportunities</span>
+    <div class="hero-data-card">
+      <div class="data-card-header">IEEPA Tariffs Ruled Unconstitutional</div>
+      <div class="data-big-number" id="bigCounter">$0B</div>
+      <div class="data-subtitle">in duties now eligible for recovery</div>
+      <div class="data-bar-wrap">
+        <div class="data-bar">
+          <div class="data-bar-fill" id="barFill"></div>
+        </div>
+        <div class="data-bar-legend">
+          <span class="legend-item"><span class="legend-dot green"></span>IEEPA tariffs (52%)</span>
+          <span class="legend-item"><span class="legend-dot dim"></span>Other customs (48%)</span>
+        </div>
       </div>
+      <div class="data-stats-row">
+        <div class="data-stat">
+          <span class="data-stat-val" id="importerCount">0</span>
+          <span class="data-stat-label">Importers affected</span>
+        </div>
+        <div class="data-stat">
+          <span class="data-stat-val" id="entryCount">0</span>
+          <span class="data-stat-label">Entries filed</span>
+        </div>
+      </div>
+      <div class="data-source">Source: CBP court filings, Atmus Filtration v. U.S.</div>
     </div>
   </div>
 </div>
@@ -404,6 +419,36 @@ document.querySelectorAll('.step-card,.engage-item,.info-card,.opp-card,.tool-ca
   el.classList.add('reveal');
   observer.observe(el);
 });
+
+/* HERO DATA CARD ANIMATION */
+function animateCounter(el,target,prefix,suffix,duration){
+  const start=performance.now();
+  function tick(now){
+    const t=Math.min((now-start)/duration,1);
+    const ease=1-Math.pow(1-t,3);
+    const val=Math.round(ease*target);
+    el.textContent=prefix+val.toLocaleString()+suffix;
+    if(t<1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const heroObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      // Animate $166B counter
+      animateCounter(document.getElementById('bigCounter'),166,'$','B',1800);
+      // Animate bar fill
+      document.getElementById('barFill').style.width='52%';
+      // Animate stat counters
+      animateCounter(document.getElementById('importerCount'),330,'','K+',1500);
+      animateCounter(document.getElementById('entryCount'),53,'','M+',1500);
+      heroObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+const heroCard=document.querySelector('.hero-data-card');
+if(heroCard) heroObserver.observe(heroCard);
 </script>
 </body>
 </html>
