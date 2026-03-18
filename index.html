@@ -15,17 +15,6 @@
 
 <body>
 
-<!-- PASSWORD GATE -->
-<div id="gate">
-<div class="gate-inner">
-<div class="gate-mark"><img src="assets/tricon.png" alt="Tariff Ranger"></div>
-<h2>Tariff Ranger</h2>
-<p>Enter access code</p>
-<input id="pw" type="password" placeholder="Password" autocomplete="off">
-<button onclick="unlock()">Enter</button>
-</div>
-</div>
-
 <!-- MAIN SITE -->
 <div id="site">
 
@@ -42,7 +31,7 @@
     <a href="#for-partners">For Partners</a>
     <a href="#tools">Tools</a>
   </div>
-  <a class="nav-cta" href="#final-cta">Get Started</a>
+  <a class="nav-cta" href="#get-started">Get Started</a>
   <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
   </button>
@@ -52,7 +41,7 @@
   <a href="#for-companies" onclick="closeMenu()">For Companies</a>
   <a href="#for-partners" onclick="closeMenu()">For Partners</a>
   <a href="#tools" onclick="closeMenu()">Tools</a>
-  <a class="nav-cta" href="#final-cta" onclick="closeMenu()">Get Started</a>
+  <a class="nav-cta" href="#get-started" onclick="closeMenu()">Get Started</a>
 </div>
 </header>
 
@@ -63,7 +52,7 @@
     <h1>Unlock Hidden<br>Tariff Refunds</h1>
     <p class="hero-sub">We identify companies likely owed significant tariff refunds and connect them with specialized partners to recover that value.</p>
     <div class="hero-ctas">
-      <a class="btn btn-accent" href="#for-companies">See If You Qualify</a>
+      <a class="btn btn-accent" href="#get-started">See If You Qualify</a>
       <a class="btn btn-ghost" href="#for-partners">Request Sample Opportunities</a>
     </div>
   </div>
@@ -172,7 +161,7 @@
     <p class="section-label">For Companies</p>
     <h2 class="section-title left">You May Be Owed Significant Tariff Refunds</h2>
     <p class="dual-body">Many companies have overpaid duties without realizing it. We help identify potential refunds and connect you with experts who can recover that value.</p>
-    <a class="btn btn-accent" href="contact.html" target="_blank" rel="noopener noreferrer">Check Your Eligibility</a>
+    <a class="btn btn-accent" href="#get-started">Check Your Eligibility</a>
   </div>
   <div class="dual-card">
     <div class="info-card">
@@ -205,7 +194,7 @@
       <li>Clear financial upside</li>
       <li>Reduced acquisition effort</li>
     </ul>
-    <a class="btn btn-accent" href="contact.html" target="_blank" rel="noopener noreferrer">Request Opportunities</a>
+    <a class="btn btn-accent" href="#get-started">Request Opportunities</a>
   </div>
   <div class="dual-card">
     <div class="opp-card">
@@ -298,14 +287,105 @@
 </div>
 </section>
 
-<!-- FINAL CTA -->
-<section id="final-cta" class="section section-cta">
-<div class="container section-narrow">
-  <h2 class="section-title">Start Unlocking Tariff Recovery Value</h2>
-  <p class="section-body">Whether you're a company or a partner, we'll connect you to the right opportunity.</p>
-  <div class="cta-pair">
-    <a class="btn btn-accent btn-lg" href="contact.html" target="_blank" rel="noopener noreferrer">Check Eligibility</a>
-    <a class="btn btn-ghost btn-lg" href="contact.html" target="_blank" rel="noopener noreferrer">Get Opportunities</a>
+<!-- GET STARTED FORM -->
+<section id="get-started" class="section section-cta">
+<div class="container form-section">
+  <div class="form-intro">
+    <p class="section-label">Get Started</p>
+    <h2 class="section-title left">See if you qualify for a refund</h2>
+    <div class="form-trust-list">
+      <div class="form-trust-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div>
+          <strong>Free eligibility assessment</strong>
+          <span>No obligation, no hidden fees</span>
+        </div>
+      </div>
+      <div class="form-trust-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div>
+          <strong>Response within 24 hours</strong>
+          <span>Our team is on standby to help</span>
+        </div>
+      </div>
+      <div class="form-trust-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <div>
+          <strong>100% confidential</strong>
+          <span>Your company data remains secure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-card">
+    <form action="https://formspree.io/f/xlgpnekz" method="POST" class="qualify-form">
+      <input type="hidden" name="_subject" value="New Tariff Ranger Lead">
+      <input type="hidden" name="_redirect" value="https://tariffranger.com/thankyou.html">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Company name <span class="req">*</span></label>
+          <input type="text" name="company" required placeholder="Your company">
+        </div>
+        <div class="form-group">
+          <label>Contact name <span class="req">*</span></label>
+          <input type="text" name="name" required placeholder="Full name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Work email <span class="req">*</span></label>
+          <input type="email" name="email" required placeholder="you@company.com">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="(555) 123-4567">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Industry</label>
+          <select name="industry">
+            <option value="">Select industry</option>
+            <option>Manufacturing</option>
+            <option>Retail / E-commerce</option>
+            <option>Automotive</option>
+            <option>Electronics</option>
+            <option>Agriculture / Food</option>
+            <option>Chemicals / Pharma</option>
+            <option>Construction / Materials</option>
+            <option>Energy</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Annual import value</label>
+          <select name="import_value">
+            <option value="">Select range</option>
+            <option>Under $1M</option>
+            <option>$1M – $5M</option>
+            <option>$5M – $25M</option>
+            <option>$25M – $100M</option>
+            <option>$100M+</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>I am registering as... <span class="req">*</span></label>
+        <select name="role" required>
+          <option value="">Select role</option>
+          <option>Importer / Company seeking recovery</option>
+          <option>Trade attorney / Customs broker</option>
+          <option>Consultant / Advisor</option>
+          <option>Other partner</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Additional details</label>
+        <textarea name="details" rows="3" placeholder="Tell us about your import activity, tariff concerns, or any questions..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-accent btn-lg form-submit">Submit for review <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg></button>
+    </form>
   </div>
 </div>
 </section>
@@ -336,16 +416,6 @@
 </div><!-- /site -->
 
 <script>
-/* PASSWORD GATE */
-function unlock(){
-  if(document.getElementById("pw").value==="tariff"){
-    document.getElementById("gate").style.display="none";
-    document.getElementById("site").style.display="block";
-  }else{
-    alert("Incorrect password");
-  }
-}
-
 /* CALCULATOR */
 function calcRefund(){
   const value=parseFloat(document.getElementById("importValue").value);
