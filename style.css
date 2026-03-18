@@ -14,9 +14,11 @@
   --text-muted: #8b949e;
   --text-faint: #545d68;
 
-  --accent: #f47458;
-  --accent-hover: #ff8a72;
-  --accent-subtle: rgba(244,116,88,0.1);
+  --green-dark: #0f4d32;
+  --green-mid: #1a6b4a;
+  --accent: #34d399;
+  --accent-hover: #5eead4;
+  --accent-subtle: rgba(52,211,153,0.1);
 
   --border: rgba(255,255,255,0.06);
   --border-strong: rgba(255,255,255,0.1);
@@ -92,7 +94,7 @@ a,button,input,select,textarea{
 a{color:var(--accent);text-decoration:none}
 a:hover{color:var(--accent-hover)}
 
-::selection{background:rgba(244,116,88,0.25);color:var(--text)}
+::selection{background:rgba(52,211,153,0.25);color:var(--text)}
 
 :focus-visible{
   outline:2px solid var(--accent);
@@ -139,11 +141,12 @@ a:hover{color:var(--accent-hover)}
 }
 
 .gate-mark{
-  width:56px;height:56px;border-radius:var(--radius-lg);
-  background:var(--accent);color:white;
-  font-family:var(--font-body);font-weight:800;font-size:1.25rem;
+  width:64px;height:64px;border-radius:var(--radius-lg);
+  background:transparent;
   display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
 }
+.gate-mark img{width:100%;height:100%;object-fit:contain}
 
 #gate h2{font-family:var(--font-body);font-size:var(--text-xl);font-weight:700;letter-spacing:-0.02em}
 #gate p{font-size:var(--text-sm);color:var(--text-muted)}
@@ -162,11 +165,11 @@ a:hover{color:var(--accent-hover)}
 #gate button{
   padding:var(--space-3) var(--space-8);
   border:none;border-radius:999px;
-  background:var(--accent);color:white;
+  background:var(--green-mid);color:white;
   font-weight:600;font-size:var(--text-sm);cursor:pointer;
   font-family:var(--font-body);
 }
-#gate button:hover{background:var(--accent-hover)}
+#gate button:hover{background:var(--green-dark)}
 
 #site{display:none}
 
@@ -189,12 +192,14 @@ a:hover{color:var(--accent-hover)}
 
 .logo-link{display:flex;align-items:center;gap:var(--space-2);text-decoration:none;color:var(--text)}
 .logo-mark{
-  width:32px;height:32px;border-radius:var(--radius-md);
-  background:var(--accent);color:white;
-  font-weight:800;font-size:0.75rem;
+  width:36px;height:36px;border-radius:var(--radius-md);
+  background:transparent;
   display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
 }
-.logo-mark.sm{width:24px;height:24px;font-size:0.625rem;border-radius:var(--radius-sm)}
+.logo-mark img{width:100%;height:100%;object-fit:contain}
+.logo-mark.sm{width:28px;height:28px;border-radius:var(--radius-sm)}
+.logo-mark.sm img{width:100%;height:100%;object-fit:contain}
 .logo-text{font-weight:700;font-size:var(--text-sm);letter-spacing:-0.02em}
 
 .nav-links{display:flex;align-items:center;gap:var(--space-5);margin-left:auto}
@@ -203,10 +208,10 @@ a:hover{color:var(--accent-hover)}
 
 .nav-cta{
   display:inline-flex;padding:var(--space-2) var(--space-5);
-  border-radius:999px;background:var(--accent);color:white!important;
+  border-radius:999px;background:var(--green-mid);color:white!important;
   font-weight:600;font-size:var(--text-xs);text-decoration:none;white-space:nowrap;
 }
-.nav-cta:hover{background:var(--accent-hover);color:white!important}
+.nav-cta:hover{background:var(--green-dark);color:white!important}
 
 .mobile-menu-btn{display:none;background:none;border:none;color:var(--text);cursor:pointer;padding:var(--space-2)}
 
@@ -230,8 +235,8 @@ a:hover{color:var(--accent-hover)}
   text-decoration:none;border:none;cursor:pointer;white-space:nowrap;
 }
 
-.btn-accent{background:var(--accent);color:white}
-.btn-accent:hover{background:var(--accent-hover);color:white}
+.btn-accent{background:var(--green-mid);color:white}
+.btn-accent:hover{background:var(--green-dark);color:white}
 
 .btn-ghost{
   background:transparent;color:var(--text-muted);
@@ -355,6 +360,9 @@ a:hover{color:var(--accent-hover)}
 .problem-sub{font-size:var(--text-base);color:var(--text-muted);margin-bottom:var(--space-3)}
 .problem-result{font-size:var(--text-lg);color:var(--accent);font-weight:600}
 
+/* Ring visual uses accent green */
+.ring-svg circle:nth-child(2){stroke:var(--accent)}
+
 /* ============================================
    HOW IT WORKS
    ============================================ */
@@ -413,7 +421,7 @@ a:hover{color:var(--accent-hover)}
   border-radius:50%;background:var(--accent-subtle);
   border:1.5px solid var(--accent);
   display:flex;align-items:center;justify-content:center;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23f47458' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2334d399' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:center;background-size:10px;
 }
 
@@ -536,7 +544,7 @@ a:hover{color:var(--accent-hover)}
 
 .tool-card input:focus,.tool-card select:focus{
   outline:none;border-color:var(--accent);
-  box-shadow:0 0 0 3px rgba(244,116,88,0.15);
+  box-shadow:0 0 0 3px rgba(52,211,153,0.15);
 }
 
 .tool-btn{margin-top:var(--space-4);width:100%}
