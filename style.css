@@ -568,6 +568,45 @@ a:hover{color:var(--accent-hover)}
 }
 
 /* ============================================
+   RECOVERY OPTIONS
+   ============================================ */
+
+.recovery-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);
+  margin:var(--space-8) auto 0;max-width:720px;
+}
+
+.recovery-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-xl);
+  padding:var(--space-6);
+  text-align:left;
+}
+
+.recovery-num{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--accent-subtle);border:1.5px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:var(--text-sm);color:var(--accent);
+  margin-bottom:var(--space-3);
+}
+
+.recovery-card h3{
+  font-family:var(--font-body);font-size:var(--text-base);
+  font-weight:700;color:var(--text);margin-bottom:var(--space-2);
+}
+
+.recovery-card p{
+  font-size:var(--text-sm);color:var(--text-muted);line-height:1.5;
+}
+
+.recovery-note{
+  text-align:center;margin-top:var(--space-6);
+  font-size:var(--text-sm);color:var(--accent);font-weight:600;
+}
+
+/* ============================================
    TOOLS
    ============================================ */
 
@@ -756,6 +795,7 @@ a:hover{color:var(--accent-hover)}
   .dual-section{grid-template-columns:1fr;gap:var(--space-6)}
   .dual-section.reverse{direction:ltr}
 
+  .recovery-grid{grid-template-columns:1fr}
   .tool-grid{grid-template-columns:1fr}
 
   .form-section{grid-template-columns:1fr;gap:var(--space-8)}
